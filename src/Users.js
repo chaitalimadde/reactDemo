@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 
-const Users = () =>{
-    const [name, setName] = useState("Chaitali");
+const Users = (props) =>{
+    const [name, setName] = useState("Shweta");
     const [info, setInfo] = useState("");
     return (
         <div>
           <h1>{name}</h1>
           <h4>{info}</h4>
-          <button style={{ marginRight: "2%" }} onClick={() => setName("Chaitali Madde")}>
+          <button style={{ marginRight: "2%" }} onClick={() => setName(props.name)}>
             Username
           </button>
           <button
             onClick={() =>
-              setInfo(`This is users test component`)
+              setInfo(props.info)
             }
           >
             info

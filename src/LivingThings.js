@@ -4,12 +4,12 @@ import * as ReactDOM from 'react-dom';
 import Users from './Users';
 import Employees from './Employees';
 import Birds from './Birds';
-// import createRoot from 'react-dom';
 
 export default class LivingThings extends React.Component { 
 
+    
     animalClicked(){
-    ReactDOM.render(<Animals />, document.getElementById('animals'));
+    ReactDOM.render(<Animals name = "Beer" info="this is animal component"/>, document.getElementById('animals'));
     }
 
     UnmountAnimalData(){
@@ -17,7 +17,7 @@ export default class LivingThings extends React.Component {
     }
 
     userClicked(){
-        ReactDOM.render(<Users />, document.getElementById('users'));
+        ReactDOM.render(<Users name = "Priya" info="this is User component"/>, document.getElementById('users'));
     }
 
     UnmountUserData(){
@@ -25,7 +25,7 @@ export default class LivingThings extends React.Component {
     }
 
     employeeClicked(){
-        ReactDOM.render(<Employees />, document.getElementById('employee'));
+        ReactDOM.render(<Employees name="Suraj" info="This is employee component"/>, document.getElementById('employee'));
     }
 
     UnmountEmployeeData(){
@@ -33,7 +33,7 @@ export default class LivingThings extends React.Component {
     }
 
     birdsClicked(){
-        ReactDOM.render(<Birds />, document.getElementById('birds'));
+        ReactDOM.render(<Birds  name = "Peacock" info="this is Bird component"/>, document.getElementById('birds'));
     }
 
     UnmountBirdsData(){
