@@ -1,12 +1,20 @@
-// import logo from './logo.svg';
 import './App.css';
-import LivingThings from './LivingThings';
-
+import ChildComponent from './childComponent';
+import React, { useState } from 'react';
 
 function App() {
+ 
+
+  const [isbuttonClicked, setCounter ] = useState(0);
+
+  function handleChange(newValue) {
+    setCounter(newValue);
+  }
+  
   return (
     <div className="App">
-      <LivingThings></LivingThings>
+              <h2>Counter Value is:{isbuttonClicked}</h2>
+        <ChildComponent  onChange={handleChange}  isbuttonClicked ={isbuttonClicked}/>
     </div>
   );
 }
