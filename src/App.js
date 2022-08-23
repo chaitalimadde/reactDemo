@@ -1,27 +1,44 @@
 import './App.css';
 import React from 'react';
-// import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
-import LivingThing from './LivingThing';
+import Employees from './Employees';
+import * as Reactdom from 'react-dom'
+import Photos from './Photos';
 
-const App =()=> {
- 
- 
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      showEmpComponent: false,
+      showPhotosComponent: false,
+    };
+  }
+
+  photosClicked =() =>{
+this.setState({
+  showPhotosComponent: true
+})
+  }
+
+  empClicked =() =>{
+    this.setState({
+      showEmpComponent: true
+    })
+      }
+
+  render(){
   return (
     <div>
-      
-      {/* <nav>
-<Link to="">Dashboard</Link>
-<Link to="/home">Home</Link>
-<Link to="/contact">Contact</Link>
-</nav>
-<Routes>
-<Route exact path="" element={<Dashboard />}/>
-<Route exact path="/home" element={<Home />} />
-<Route exact path="/contact" element={<Contact />} />
-</Routes> */}
-   <LivingThing />
-            </div>
-  );
+        {/* <Employees/> */}  
+        <button onClick={this.empClicked}>Show Empoyee Data</button>
+        {this.state.showEmpComponent ?
+        <Employees />: null}
+        <button onClick={this.photosClicked}>Show Photos</button>
+        {this.state.showPhotosComponent ?
+        <Photos />: null}
+        
+        </div>
+  );}
 }
 
 export default App;
