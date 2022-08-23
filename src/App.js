@@ -1,23 +1,28 @@
 import './App.css';
 import React from 'react';
-import CounterComponent from './CounterComponent';
+// import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+import LivingThing from './LivingThing';
 
-export default class App extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-        counter :0
-    }
-    }
-  render(){
+const App =()=> {
+ 
+ 
   return (
     <div>
-    <h1>Increment counter example</h1>
-    <p>{this.state.counter}</p>
-    <button onClick={()=>{this.setState({counter: this.state.counter +1})}}>Click me</button>
-    <CounterComponent  data={this.state.counter}/>
+      
+      {/* <nav>
+<Link to="">Dashboard</Link>
+<Link to="/home">Home</Link>
+<Link to="/contact">Contact</Link>
+</nav>
+<Routes>
+<Route exact path="" element={<Dashboard />}/>
+<Route exact path="/home" element={<Home />} />
+<Route exact path="/contact" element={<Contact />} />
+</Routes> */}
+   <LivingThing />
             </div>
   );
-  }
 }
+
+export default App;
 
