@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Birds =() =>{
-    const [name, setName] = useState('Peacock');
+class Birds extends React.Component{
+
+    constructor(props){
+super(props)
+this.state = {
+    name: "Peacock"
+}
+    }
+
+    render(){
     return<div>
      <h2>Bird component works</h2>
-     <p>{name}</p>
+     <p>{this.state.name}</p>
     </div>
+}
 }
 
 export default Birds;

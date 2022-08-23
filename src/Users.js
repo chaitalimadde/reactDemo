@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-const Users =() =>{
-    const [name, setName] = useState('Suraj');
+import React from 'react';
+class Users extends React.Component{
+
+    constructor(props){
+super(props)
+this.state = {
+    name: "Riya"
+}
+    }
+
+    render(){
     return<div>
         <h2>Users works</h2>
-        <p>{name}</p>
+        <p>{this.state.name}</p>
     </div>
+    }
 }
 
 export default Users;
