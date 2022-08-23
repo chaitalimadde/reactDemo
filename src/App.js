@@ -1,22 +1,23 @@
 import './App.css';
-import ChildComponent from './childComponent';
-import React, { useState } from 'react';
+import React from 'react';
+import CounterComponent from './CounterComponent';
 
-function App() {
- 
-
-  const [isbuttonClicked, setCounter ] = useState(0);
-
-  function handleChange(newValue) {
-    setCounter(newValue);
-  }
-  
+export default class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+        counter :0
+    }
+    }
+  render(){
   return (
-    <div className="App">
-              <h2>Counter Value is:{isbuttonClicked}</h2>
-        <ChildComponent  onChange={handleChange}  isbuttonClicked ={isbuttonClicked}/>
-    </div>
+    <div>
+    <h1>Increment counter example</h1>
+    <p>{this.state.counter}</p>
+    <button onClick={()=>{this.setState({counter: this.state.counter +1})}}>Click me</button>
+    <CounterComponent  data={this.state.counter}/>
+            </div>
   );
+  }
 }
 
-export default App;
