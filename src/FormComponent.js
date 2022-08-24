@@ -51,6 +51,12 @@ buttonClicked = (e)=>{
     // });
 }
 
+deleteRecord =(index) =>{
+    this.setState({
+        data:this.state.data.filter(d=>d.name !== index)
+    })
+}
+
 render(){
     return<div>
 <form>
@@ -74,7 +80,7 @@ render(){
     
     {this.state.data?.map(item => {
         return(
-    <tr><td>{item.name}</td><td>{item.dob}</td><td>{item.gender}</td></tr>
+    <tr key={item.name}><td>{item.name}</td><td>{item.dob}</td><td>{item.gender}</td><td><button onClick={()=>this.deleteRecord(item.name)}>Del</button></td></tr>
         )
 })}
     </tbody></table>
