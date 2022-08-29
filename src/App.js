@@ -1,25 +1,16 @@
 import './App.css';
 import React from 'react';
-import FormComponent from './FormComponent';
+import Employees from './Employees';
+import EmploeeForm from './EmployeeForm';
 
-class App extends React.Component {
+const App =() => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      showEmpComponent: false,
-      showPhotosComponent: false,
-    };
-  }
-
-
-  render(){
   return (
     <div>
-
-        <FormComponent />
+<EmploeeForm />
+      {/* <Employees /> */}
         </div>
-  );}
+  );
 }
 
 export default App;
