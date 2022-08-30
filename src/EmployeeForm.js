@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
 import saveEmpData from './actions/index';
 import Employees from './Employees';
-import * as ReactDOM from 'react-dom';
 
 class EmploeeForm extends React.Component{
 

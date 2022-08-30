@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { connect } from 'react-redux';
 
@@ -8,7 +8,6 @@ class Employees  extends React.Component{
   }
 
   render(){
-    const loadData = this.props?.empData;
     return (
         <div>    
     <h1>Employees Data</h1>
