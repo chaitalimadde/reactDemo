@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
-import saveEmpData from './actions/index';
+import {saveEmpData} from './actions/index';
 import Employees from './Employees';
 
 class EmploeeForm extends React.Component{
@@ -112,7 +112,7 @@ class EmploeeForm extends React.Component{
     
 
 }
-let mapDispatchToProps =(dispatch)=>{
+function mapDispatchToProps(dispatch){
     return {
         saveEmpData:data=>dispatch(saveEmpData(data))
     }
@@ -120,4 +120,4 @@ let mapDispatchToProps =(dispatch)=>{
 
 
 export default connect(
-    null,mapDispatchToProps, )(EmploeeForm)
+    null,mapDispatchToProps)(EmploeeForm)

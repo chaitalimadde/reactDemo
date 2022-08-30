@@ -1,8 +1,10 @@
 import saveData from './saveData';
 import {combineReducers} from 'redux';
+import postReducer from './postReducer';
 
 const rootReducer = combineReducers({
-    saveData
+    saveData,
+    postReducer
 })
 
 export default rootReducer;
