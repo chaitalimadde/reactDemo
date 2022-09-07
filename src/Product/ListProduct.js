@@ -5,7 +5,7 @@ import React from 'react';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import { Row, Col, Container } from "react-bootstrap";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink ,Navigate} from 'react-router-dom';
 import { withRouter } from "react-router";
 
 class ListProduct extends React.Component{
@@ -14,7 +14,8 @@ class ListProduct extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            responseData: []
+            responseData: [],
+            navFlag: false
         }
     }
 
@@ -35,6 +36,10 @@ class ListProduct extends React.Component{
             }
         )
     }
+
+    navigatePage=()=>{
+        this.setState({navFlag: true})
+    }
       
 render(){
     return <div>
@@ -44,7 +49,12 @@ render(){
             {this.state.responseData ? this.state.responseData.map((prod, k) => (
                 
                 <Col key={k} xs={12} md={4} lg={3}>
-                    <Card onClick = {()=>this.goToCarddetails('cardId1')}>
+                    <div  onClick={this.navigatePage}>
+                    <Card>
+                    {
+        this.state.navFlag?
+    <Navigate to="/pagedescription"  state={{ data: prod }}/> :<></>
+}
                         <Card.Img src={prod.image} />
 
                         <Card.Body>
@@ -61,10 +71,12 @@ render(){
                         </Card.Body>
 
                     </Card>
+                    </div>
                 </Col>
             )) : <p></p>}
         </Row>
     </Container>
+
         </div>}
 }
 
