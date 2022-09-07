@@ -1,36 +1,18 @@
 // import logo from './logo.svg';
 import './App.css';
-import Lion from './Animals/Lion';
-import Tiger from './Animals/Tiger';
-import Bear from './Animals/Bear';
-import Zebra from './Animals/Zebra';
-import Panda from './Animals/Panda';
-import Deer from './Animals/Deer';
-import Bat from './Birds/Bat';
-import Bee from './Birds/Bee';
-import Duckling from './Birds/Duckling';
-import Peacock from './Birds/Peacock';
-import Penguin from './Birds/Penguin';
-import Pigeon from './Birds/Pigeon';
-
+import Login from './Login';
+import { Routes, Route } from "react-router-dom";
+import Dashboard from './Dashboard';
+import UserDetails from './UserDetails.js/UserDetails';
 
 function App() {
   return (
     <div className="App">
-      <h3>Below are animal class component:</h3>
-      <Lion></Lion>
-      <Tiger></Tiger>
-      <Bear></Bear>
-      <Zebra></Zebra>
-      <Panda></Panda>
-      <Deer></Deer>
-      <h3>Below are bird functional component:</h3>
-      <Bat></Bat>
-      <Bee></Bee>
-      <Duckling></Duckling>
-      <Peacock></Peacock>
-      <Penguin></Penguin>
-      <Pigeon></Pigeon>
+                <Routes>
+                     {/* <Route exact path="/" element={<Login/>}></Route> */}
+                    <Route exact path="/dashboard" element={<Dashboard/>}></Route>
+                </Routes>
+                <Dashboard />
     </div>
   );
 }

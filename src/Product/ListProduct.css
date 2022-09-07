@@ -1,0 +1,22 @@
+
+.icon{
+    width: 166px;
+    /* height: 154px; */
+    height: 230px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+/* .cardWidth{
+    width: 30rem !important;
+} */
+
+.widget-svg{
+    width: 33px !important;
+    height: 25px !important;
+}
+
+.container{
+    margin-right: 10px !important;
+}
