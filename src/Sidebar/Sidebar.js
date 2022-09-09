@@ -1,10 +1,10 @@
 //import useState hook to create menu collapse state
 import React, { useState } from "react";
-import { Link, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import {
   ProSidebar,
-  SubMenu,
   Menu,
   MenuItem,
   SidebarHeader,
@@ -29,6 +29,7 @@ import {MdPayment} from 'react-icons/md';
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Sidebar.css";
+import MainSection from "../MainSection/MainSection";
 
 const Sidebar = () => {
   //create initial menuCollapse state using useState hook
@@ -40,8 +41,15 @@ const Sidebar = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
 
+  const navigate = useNavigate();
+  const logoutClicked = () => {
+    localStorage.removeItem('token');
+    navigate("/");
+  };
+
   return (
     <>
+    
       <div id="header">
         {/* collapsed props to change menu size using menucollapse state */}
         <ProSidebar collapsed={menuCollapse}>
@@ -58,30 +66,31 @@ const Sidebar = () => {
           <SidebarContent>
             <Menu iconShape="square">
               <MenuItem active={true} icon={<FiHome />}>
-                Home
+                Home<NavLink to="/home" />
               </MenuItem>
-              <MenuItem icon={<RiDashboardLine />}>Dashboard</MenuItem>
+              <MenuItem icon={<RiDashboardLine />}>Dashboard <NavLink to="/home/dashboard" /></MenuItem>
               <MenuItem icon={<MdProductionQuantityLimits />}>Products</MenuItem>
-              <MenuItem style={{marginLeft:'40px'}}>List Products <NavLink to="/listproduct" /></MenuItem>
+              <MenuItem style={{marginLeft:'40px'}}>List Products <NavLink to="/home/listproduct" /></MenuItem>
               <MenuItem style={{marginLeft:'40px'}}>Add new Product</MenuItem>
               <MenuItem icon={<MdDriveFileMoveOutline />}>File Manager</MenuItem>
               <MenuItem icon={<GrAnalytics />}>Traffic analyzer</MenuItem>
               <MenuItem icon={<FiUsers />}>Users Manager</MenuItem>
-              <MenuItem style={{marginLeft:'40px'}}>List Users <NavLink to="/usermanager" /></MenuItem>
-              <MenuItem style={{marginLeft:'40px'}}>Add Users <NavLink to="/adduser" /></MenuItem>
+              <MenuItem style={{marginLeft:'40px'}}>List Users <NavLink to="/home/usermanager" /></MenuItem>
+              <MenuItem style={{marginLeft:'40px'}}>Add Users <NavLink to="/home/adduser" /></MenuItem>
      
               <MenuItem icon={<RiCalendar2Line />}>Calendar</MenuItem>
               <MenuItem icon={<TbMessages />}>Messages</MenuItem>
-              <MenuItem icon={<MdPayment />}>Payments</MenuItem>
+              {/* <MenuItem icon={<MdPayment />}>Payments</MenuItem> */}
             </Menu>
           </SidebarContent>
           <SidebarFooter>
             <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+              <MenuItem icon={<FiLogOut />} onClick={logoutClicked}>Logout</MenuItem>
             </Menu>
           </SidebarFooter>
         </ProSidebar>
       </div>
+      <MainSection />
     </>
   );
 };

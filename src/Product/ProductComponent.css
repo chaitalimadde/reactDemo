@@ -1,0 +1,30 @@
+
+.describe{
+    line-height: 1em;
+    height: 1.8em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;   
+}
+
+.product-card {
+    height: 200px !important;
+    border: 2px solid rgb(62, 153, 210) !important;
+    border-radius: 20px !important;
+}
+.category{
+    background-color: #84b0f2;
+    color: #fff;
+   
+}
+.price{
+    color: #3498DB;
+    /* margin-right: 10px;
+    margin-bottom: 10px; */
+}
+
+.actual_price{
+text-decoration: line-through;
+}
+

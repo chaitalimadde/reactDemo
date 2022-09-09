@@ -39,7 +39,7 @@ const Login =()=>{
         .then(response=>{
             setToken(response.data.token);
                  localStorage.setItem('token', JSON.stringify(response.data));
-                 navigate("/dashboard");
+                 navigate("/home");
         })
         .catch(err=>{
                if(err.response.data.error === 'user not found')

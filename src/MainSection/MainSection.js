@@ -5,6 +5,7 @@ import ListUser from './../ListUser/ListUser';
 import UserDetails from '../UserDetails.js/UserDetails';
 import ListProduct from './../Product/ListProduct';
 import PageDescription from './../Product/PageDescription';
+import Dashboard from './../Dashboard';
 
 export default function MainSection() {
   return (
@@ -15,6 +16,7 @@ export default function MainSection() {
                     <Route exact path="/userdetails" element={<UserDetails/>}></Route>
                     <Route exact path="/listproduct" element={<ListProduct/>}></Route>
                     <Route exact path="/pagedescription" element={<PageDescription/>}></Route>
+                    <Route exact path="/dashboard" element={<Dashboard/>}></Route>
                 </Routes>
     </div>
   );

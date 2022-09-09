@@ -1,5 +1,4 @@
 import './ListUser.css';
-import Table from 'react-bootstrap/Table'
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import axios from 'axios';
@@ -39,7 +38,7 @@ mode:'checkbox'
 
   const formatWithName = (col,row) =>{
 return(
-  <NavLink to={'/userdetails'} state={{ data: row }}>
+  <NavLink to={'/home/userdetails'} state={{ data: row }}>
           {row.name} </NavLink>
 )
   }
@@ -84,23 +83,16 @@ return(
 
     }, [setResponseData, responseData])
 
-const onItemCheck=(e, item) =>{
-    let tempList = responseData;
-    tempList.map((user) => {
-      if (user.id === item.id) {
-        user.selected = e.target.checked;
-      }
-      return user;
-    });
-}
-
-
-// const getdata = (user) =>{
-//     console.log("user clicked")
-//     console.log(user);
-//     setLat(user.address.geo.lat);
-//     setLong(user.address.geo.lng);
+// const onItemCheck=(e, item) =>{
+//     let tempList = responseData;
+//     tempList.map((user) => {
+//       if (user.id === item.id) {
+//         user.selected = e.target.checked;
+//       }
+//       return user;
+//     });
 // }
+
 
     return<div className="color">
         <h3>User Manager</h3>

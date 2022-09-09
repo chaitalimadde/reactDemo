@@ -20,3 +20,47 @@
 .container{
     margin-right: 10px !important;
 }
+
+/* ------------------------------------------- */
+
+.checked {
+    color: #84b0f2;
+  }
+  .ui-detail{
+    height: 50px ;
+  }
+  .pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    margin-left: 350px;
+    margin-top: 0px !important;
+  }
+  
+  @media only screen and (max-width:992px){
+    .product_card{
+      min-width: 24rem;
+    }
+    .display-data{
+      /* resize: both !important; */
+      overflow: auto !important;
+    }
+  }
+  
+  
+  @media only screen and (min-width:768px){
+    .product-card {
+      min-width: 20rem !important;
+    }
+  }
+  
+  @media only screen and (max-width:575px){
+    .product-card {
+      min-width: 20rem !important;
+    }
+    
+  }
+  
+  .newDemo{
+    margin-left: 212px !important;
+}

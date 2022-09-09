@@ -1,83 +1,56 @@
-import Card from 'react-bootstrap/Card';
-import './ListProduct.css';
-import Button from 'react-bootstrap/Button';
-import React from 'react';
-import axios from 'axios';
-import StarRatings from 'react-star-ratings';
-import { Row, Col, Container } from "react-bootstrap";
-import { Link, NavLink ,Navigate} from 'react-router-dom';
-import { withRouter } from "react-router";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import ProductComponent from "./ProductComponent";
+import ProductPagination from "./ProductPagination;";
+import "./ListProduct.css";
+// import './ProductPagination.css'
+import { Navigate } from "react-router-dom";
 
-class ListProduct extends React.Component{
-    // let [responseData, setResponseData] = React.useState('');
+const ListProduct = () => {
+  const [data, setData] = useState([]);
+  const [loading,setLoading]=useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage] = useState(4);
+  const token = JSON.parse(localStorage.getItem("token"));
+
+
+  const fetchProducts = async () => {
+    setLoading(true);
+    const response = await axios
+      .get("https://fakestoreapi.com/products")
+      .then((data) => setData(data.data));
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const indexOfLastPost = currentPage * dataPerPage;
+  const indexOfFirstPost = indexOfLastPost - dataPerPage;
+  const currentPost = data.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  if(token ===null){
+    return <Navigate to="/" replace />;
+  }
   
-    constructor(props){
-        super(props);
-        this.state={
-            responseData: [],
-            navFlag: false
-        }
-    }
-
-    goToCarddetails = (details) => {
-        console.log("selected card details:", details);
-        this.props.history.push('/pagedescription');
-     }
-
-   componentDidMount=()=>{
-        axios.get('https://fakestoreapi.com/products')
-        .then(response=>{
-            
-            // response.data.newPrice = (response.data.price * response.data.price *10) /100;
-            this.setState({responseData: response.data})
-        })
-        .catch(err=>{
-               console.log(err)
-            }
-        )
-    }
-
-    navigatePage=()=>{
-        this.setState({navFlag: true})
-    }
-      
-render(){
-    return <div>
-<h1>List product page</h1>
-<Container>
-        <Row>
-            {this.state.responseData ? this.state.responseData.map((prod, k) => (
-                
-                <Col key={k} xs={12} md={4} lg={3}>
-                    <div  onClick={this.navigatePage}>
-                    <Card>
-                    {
-        this.state.navFlag?
-    <Navigate to="/pagedescription"  state={{ data: prod }}/> :<></>
-}
-                        <Card.Img src={prod.image} />
-
-                        <Card.Body>
-                        <Card.Title><Button variant="primary">{prod.category}</Button></Card.Title>
-                                    <Card.Text style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>{prod.description}</Card.Text>
-                                    <span style={{ paddingRight: '10px'}}>${prod.price}</span>
-                                    <span style={{textDecoration: 'line-through'}}>{(prod.price +(prod.price *10) /100).toFixed(2)}</span>
-        <StarRatings
-            rating={prod.rating.rate}
-            starRatedColor="blue"
-            numberOfStars={5}
-            name="rating"
-          />
-                        </Card.Body>
-
-                    </Card>
-                    </div>
-                </Col>
-            )) : <p></p>}
-        </Row>
-    </Container>
-
-        </div>}
-}
+  return (
+    <div className="container-fluid newDemo">
+      <div className="row">
+        <div className="col-sm-6 col-md-6 col-lg-12">
+          <div className="row product_card" data-testid="productid">
+            <ProductComponent item={currentPost} isLoading={loading}/>
+           
+            <ProductPagination
+              postPerPage={dataPerPage}
+              totalPost={data.length}
+              paginate={paginate}
+            />
+         </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ListProduct;
